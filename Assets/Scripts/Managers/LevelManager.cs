@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour
         ReloadLevel();
     }
 
-    void LoadLevel(int levelIndex)
+    private void LoadLevel(int levelIndex)
     {
         ClearActiveLevel();
 
@@ -58,13 +58,9 @@ public class LevelManager : MonoBehaviour
         {
             activeLevel = Instantiate(levelPrefab);
         }
-        else
-        {
-            Debug.LogError("Level prefab not found at path: " + levelPrefabPath);
-        }
     }
 
-    void ClearActiveLevel()
+    private void ClearActiveLevel()
     {
         if (activeLevel != null)
         {
@@ -72,14 +68,14 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void LoadNextLevel()
+    private void LoadNextLevel()
     {
-        currentLevelIndex = (currentLevelIndex + 1) % 10; 
+        currentLevelIndex = (currentLevelIndex + 1) % 10;
         LoadLevel(currentLevelIndex);
     }
 
 
-    void ReloadLevel()
+    private void ReloadLevel()
     {
         LoadLevel(currentLevelIndex);
     }

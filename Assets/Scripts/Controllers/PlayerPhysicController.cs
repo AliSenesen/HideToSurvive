@@ -6,22 +6,21 @@ namespace Controllers
 {
     public class PlayerPhysicController : MonoBehaviour
     {
-        private bool gotKey;
-      
+        private int keyCount = 0;
+
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Key"))
             {
-                gotKey = true;
+                keyCount += 1;
                 Destroy(other.gameObject);
             }
 
-            if (other.TryGetComponent(out DoorController door) && gotKey)
+            if (other.TryGetComponent(out DoorController door) && keyCount > 0 && !door.IsOpened)
             {
                 door.AnimateDoor();
-               
-                gotKey = false;
+                keyCount--;
             }
 
             if (other.CompareTag("Finish"))
@@ -33,10 +32,6 @@ namespace Controllers
             {
                 CoreGameEvents.Instance.onFail?.Invoke();
             }
-
-            
         }
-
-       
     }
 }

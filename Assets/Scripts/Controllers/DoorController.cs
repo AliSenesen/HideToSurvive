@@ -5,8 +5,11 @@ namespace Controllers
 {
     public class DoorController : MonoBehaviour
     {
+        public bool IsOpened;
+       
         [SerializeField] private GameObject leftDoor;
         [SerializeField] private GameObject rightDoor;
+       
         
 
 
@@ -14,6 +17,7 @@ namespace Controllers
         {
             leftDoor.transform.DOLocalMoveX(0.95f, .25f).SetEase(Ease.Linear);
             rightDoor.transform.DOLocalMoveX(-0.75f, .25f).SetEase(Ease.Linear);
+            IsOpened = true;
         }
     }
 }
