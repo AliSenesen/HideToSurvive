@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Events;
 using UnityEngine;
 
@@ -11,8 +12,12 @@ namespace Controllers
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Key"))
+            if (other.TryGetComponent(out KeyAnimationController key))
             {
+                if (key.KeyTween != null && key.KeyTween.IsActive())
+                {
+                    key.KeyTween.Kill(); 
+                }
                 keyCount += 1;
                 Destroy(other.gameObject);
             }
