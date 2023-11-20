@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    private int currentLevelIndex = 0;
+    [SerializeField] private int currentLevelIndex ;
     private GameObject activeLevel;
 
     private void OnEnable()

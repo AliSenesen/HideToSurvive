@@ -9,6 +9,7 @@ namespace Controllers
     public class EnemyBehaviourController : MonoBehaviour
     {
         [SerializeField] private EnemyType type;
+        [SerializeField] private EnemyAnimationController animationController;
         [SerializeField] private Transform startPos;
         [SerializeField] private Transform targetPos;
 
@@ -20,6 +21,11 @@ namespace Controllers
             if (type.CanMove)
             {
                 PaceMovement();
+            }
+
+            if (!type.CanMove)
+            {
+                animationController.IdleAnim();
             }
         }
 
@@ -47,6 +53,8 @@ namespace Controllers
                     _movingTowardsTarget = true;
                 }
             }
+
+            animationController.WalkAnim();
         }
     }
 }

@@ -134,7 +134,7 @@ Transform:
   m_GameObject: {fileID: 1150544934733844861}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.048931696, y: 0.7432941, z: 0.51}
+  m_LocalPosition: {x: -0.048931696, y: 0.7432941, z: 0.498}
   m_LocalScale: {x: 1.43, y: 2, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -159,8 +159,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9900002, y: 1.0396105, z: 1}
-  m_Center: {x: 0, y: -0.024966378, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.9910507}
+  m_Center: {x: 0, y: -0.024966378, z: -0.008571625}
 --- !u!33 &8344952716719088234
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -817,32 +817,32 @@ PrefabInstance:
     - target: {fileID: 1171920784684619405, guid: 3d2f04855f0eaae43a7bce256bcc4a83,
         type: 3}
       propertyPath: m_Size.x
-      value: 2.942408
+      value: 2.3765566
       objectReference: {fileID: 0}
     - target: {fileID: 1171920784684619405, guid: 3d2f04855f0eaae43a7bce256bcc4a83,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.30966386
+      value: 0.30966392
       objectReference: {fileID: 0}
     - target: {fileID: 1171920784684619405, guid: 3d2f04855f0eaae43a7bce256bcc4a83,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.9788179
+      value: 1.4068522
       objectReference: {fileID: 0}
     - target: {fileID: 1171920784684619405, guid: 3d2f04855f0eaae43a7bce256bcc4a83,
         type: 3}
       propertyPath: m_Center.x
-      value: -0.006026268
+      value: 0.083033755
       objectReference: {fileID: 0}
     - target: {fileID: 1171920784684619405, guid: 3d2f04855f0eaae43a7bce256bcc4a83,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.15526873
+      value: 0.15526874
       objectReference: {fileID: 0}
     - target: {fileID: 1171920784684619405, guid: 3d2f04855f0eaae43a7bce256bcc4a83,
         type: 3}
       propertyPath: m_Center.z
-      value: -1.1831355
+      value: -0.89715266
       objectReference: {fileID: 0}
     - target: {fileID: 1171920784684619405, guid: 3d2f04855f0eaae43a7bce256bcc4a83,
         type: 3}
@@ -1010,6 +1010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87179391328c4ea2913e03276ad47436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsOpened: 0
   leftDoor: {fileID: 1519739753156795062}
   rightDoor: {fileID: 7718173277805985927}
 --- !u!4 &2333963592273967699 stripped

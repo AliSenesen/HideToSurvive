@@ -203,6 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3543284027301089138}
+  - component: {fileID: 8319664843985954958}
   - component: {fileID: 7852514101868960495}
   - component: {fileID: 8136373614018991745}
   m_Layer: 0
@@ -228,6 +229,19 @@ Transform:
   - {fileID: 316984889060582528}
   m_Father: {fileID: 9032844766894974079}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8319664843985954958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867831256818816807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae8c939f724881b905f4956fece435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7852514101868960495}
 --- !u!95 &7852514101868960495
 Animator:
   serializedVersion: 5
@@ -237,8 +251,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867831256818816807}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: b20a3c10714a6ac439af479e3273de65, type: 3}
+  m_Controller: {fileID: 9100000, guid: d32a55970f9f9b641882dd99f2a8e04b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1120,6 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: b4b51a90558d4ca4b9c0c05f4189767b, type: 2}
+  animationController: {fileID: 8319664843985954958}
   startPos: {fileID: 0}
   targetPos: {fileID: 0}
 --- !u!1 &5128407018800214352

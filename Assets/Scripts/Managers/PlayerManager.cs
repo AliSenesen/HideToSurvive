@@ -31,7 +31,7 @@ namespace Managers
 
         private void OnLevelChange()
         {
-            Vector3 startPos = new Vector3(0, 0, -10);
+            Vector3 startPos = new Vector3(0, 0.3f, -10);
            transform.position = startPos;
         }
     }

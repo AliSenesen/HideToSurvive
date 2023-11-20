@@ -7,7 +7,7 @@ namespace Controllers
 {
     public class PlayerPhysicController : MonoBehaviour
     {
-        private int keyCount = 0;
+        private int _keyCount;
 
 
         private void OnTriggerEnter(Collider other)
@@ -16,25 +16,28 @@ namespace Controllers
             {
                 if (key.KeyTween != null && key.KeyTween.IsActive())
                 {
-                    key.KeyTween.Kill(); 
+                    key.KeyTween.Kill();
                 }
-                keyCount += 1;
+
+                _keyCount += 1;
                 Destroy(other.gameObject);
             }
 
-            if (other.TryGetComponent(out DoorController door) && keyCount > 0 && !door.IsOpened)
+            if (other.TryGetComponent(out DoorController door) && _keyCount > 0 && !door.IsOpened)
             {
                 door.AnimateDoor();
-                keyCount--;
+                _keyCount -= 1;
             }
 
             if (other.CompareTag("Finish"))
             {
+                _keyCount = 0;
                 CoreGameEvents.Instance.onWin?.Invoke();
             }
 
             if (other.CompareTag("Enemy"))
             {
+                _keyCount = 0;
                 CoreGameEvents.Instance.onFail?.Invoke();
             }
         }
