@@ -3,6 +3,7 @@ using Controllers;
 using DG.Tweening;
 using Enums;
 using Events;
+using TMPro;
 using UnityEngine;
 
 namespace Managers
@@ -10,9 +11,18 @@ namespace Managers
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private UIPanelController panelController;
+        [SerializeField] private TextMeshProUGUI levelText;
+
+        private int _levelCount;
 
 
         #region EventSubscription
+
+        private void Awake()
+        {
+            _levelCount = 1;
+            levelText.text = "Lv" + " " + _levelCount;
+        }
 
         private void OnEnable()
         {
@@ -48,6 +58,7 @@ namespace Managers
         private void OnWin()
         {
             panelController.OpenPanel(UIPanels.Win);
+            UpdateUI();
         }
 
         private void OnFail()
@@ -60,13 +71,18 @@ namespace Managers
             panelController.ClosePanel(UIPanels.Win);
             CoreGameEvents.Instance.onLevelChange?.Invoke();
         }
+
         public void TryAgainButton()
         {
             panelController.ClosePanel(UIPanels.Fail);
             CoreGameEvents.Instance.onRestart?.Invoke();
         }
-        
 
+        private void UpdateUI()
+        {
+            _levelCount++;
+            levelText.text = "Lv" + " " + _levelCount;
+        }
 
         public void QuitGameButton()
         {

@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private int currentLevelIndex ;
-    private GameObject activeLevel;
+    [SerializeField] private int currentLevelIndex;
+    [SerializeField] private GameObject[] levelList; 
+
+    private GameObject _activeLevel;
 
     private void OnEnable()
     {
@@ -19,7 +21,6 @@ public class LevelManager : MonoBehaviour
         CoreGameEvents.Instance.onLevelChange += OnLevelChange;
         CoreGameEvents.Instance.onRestart += OnRestart;
     }
-
 
     private void UnSubscribeEvents()
     {
@@ -51,29 +52,26 @@ public class LevelManager : MonoBehaviour
     {
         ClearActiveLevel();
 
-        string levelPrefabPath = "Levels/Level" + levelIndex;
-        GameObject levelPrefab = Resources.Load<GameObject>(levelPrefabPath);
-
-        if (levelPrefab != null)
+        if (levelIndex >= 0 && levelIndex < levelList.Length)
         {
-            activeLevel = Instantiate(levelPrefab);
+            _activeLevel = Instantiate(levelList[levelIndex]);
         }
+       
     }
 
     private void ClearActiveLevel()
     {
-        if (activeLevel != null)
+        if (_activeLevel != null)
         {
-            Destroy(activeLevel);
+            Destroy(_activeLevel);
         }
     }
 
     private void LoadNextLevel()
     {
-        currentLevelIndex = (currentLevelIndex + 1) % 10;
+        currentLevelIndex = (currentLevelIndex + 1) % levelList.Length; 
         LoadLevel(currentLevelIndex);
     }
-
 
     private void ReloadLevel()
     {

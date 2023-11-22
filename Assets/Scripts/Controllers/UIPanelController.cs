@@ -1,21 +1,22 @@
 ﻿using System.Collections.Generic;
 using Enums;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Controllers
 {
     public class UIPanelController : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> PanelsList;
+        [SerializeField] private List<GameObject> panelsList;
 
         public void OpenPanel(UIPanels panels)
         {
-            PanelsList[(int)panels].SetActive(true);
+            panelsList[(int)panels].SetActive(true);
         }
 
         public void ClosePanel(UIPanels panels)
         {
-            PanelsList[(int)panels].SetActive(false);
+            panelsList[(int)panels].SetActive(false);
         }
     }
 }
