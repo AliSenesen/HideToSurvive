@@ -7,7 +7,7 @@ namespace Datas.PlayerMovementData
     
     public class MovementData : ScriptableObject
     {
-        public int Speed;
+        public float Speed;
 
     }
 }

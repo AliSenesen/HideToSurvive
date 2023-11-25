@@ -1,31 +1,33 @@
-using Controllers;
 using Datas.PlayerMovementData;
 using UnityEngine;
 
-public class PlayerMovementController : MonoBehaviour
+namespace Controllers
 {
-    [SerializeField] private MovementData data;
-    [SerializeField] private PlayerAnimationController animationController;
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private FloatingJoystick joystick;
-
-    private void FixedUpdate()
+    public class PlayerMovementController : MonoBehaviour
     {
-        Move();
-    }
+        [SerializeField] private MovementData data;
+        [SerializeField] private PlayerAnimationController animationController;
+        [SerializeField] private Rigidbody rb;
+        [SerializeField] private FloatingJoystick joystick;
 
-    private void Move()
-    {
-        rb.velocity = new Vector3(joystick.Horizontal * data.Speed, rb.velocity.y, joystick.Vertical * data.Speed);
-
-        if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+        private void FixedUpdate()
         {
-            transform.rotation = Quaternion.LookRotation(rb.velocity);
-            animationController.StartWalkAnim();
+            Move();
         }
-        else
+
+        private void Move()
         {
-            animationController.StartIdleAnim();
+            rb.velocity = new Vector3(joystick.Horizontal * data.Speed, rb.velocity.y, joystick.Vertical * data.Speed);
+
+            if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+            {
+                transform.rotation = Quaternion.LookRotation(rb.velocity);
+                animationController.StartWalkAnim();
+            }
+            else
+            {
+                animationController.StartIdleAnim();
+            }
         }
     }
 }

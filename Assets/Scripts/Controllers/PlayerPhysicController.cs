@@ -29,16 +29,21 @@ namespace Controllers
                 _keyCount -= 1;
             }
 
-            if (other.CompareTag("Finish"))
+            if (other.TryGetComponent(out RedButtonController button))
             {
-                _keyCount = 0;
-                CoreGameEvents.Instance.onWin?.Invoke();
+                button.BrokeTurret();
             }
 
             if (other.CompareTag("Enemy"))
             {
                 _keyCount = 0;
                 CoreGameEvents.Instance.onFail?.Invoke();
+            }
+
+            if (other.CompareTag("Finish"))
+            {
+                _keyCount = 0;
+                CoreGameEvents.Instance.onWin?.Invoke();
             }
         }
     }

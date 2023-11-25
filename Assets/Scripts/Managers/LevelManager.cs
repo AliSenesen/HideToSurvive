@@ -1,80 +1,80 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Events;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+namespace Managers
 {
-    [SerializeField] private int currentLevelIndex;
-    [SerializeField] private GameObject[] levelList; 
-
-    private GameObject _activeLevel;
-
-    private void OnEnable()
+    public class LevelManager : MonoBehaviour
     {
-        SubscribeEvents();
-    }
+        [SerializeField] private int currentLevelIndex;
+        [SerializeField] private GameObject[] levelList; 
 
-    private void SubscribeEvents()
-    {
-        CoreGameEvents.Instance.onLevelChange += OnLevelChange;
-        CoreGameEvents.Instance.onRestart += OnRestart;
-    }
+        private GameObject _activeLevel;
 
-    private void UnSubscribeEvents()
-    {
-        CoreGameEvents.Instance.onLevelChange -= OnLevelChange;
-        CoreGameEvents.Instance.onRestart -= OnRestart;
-    }
-
-    private void OnDisable()
-    {
-        UnSubscribeEvents();
-    }
-
-    private void Start()
-    {
-        LoadLevel(currentLevelIndex);
-    }
-
-    private void OnLevelChange()
-    {
-        LoadNextLevel();
-    }
-
-    private void OnRestart()
-    {
-        ReloadLevel();
-    }
-
-    private void LoadLevel(int levelIndex)
-    {
-        ClearActiveLevel();
-
-        if (levelIndex >= 0 && levelIndex < levelList.Length)
+        private void OnEnable()
         {
-            _activeLevel = Instantiate(levelList[levelIndex]);
+            SubscribeEvents();
         }
+
+        private void SubscribeEvents()
+        {
+            CoreGameEvents.Instance.onLevelChange += OnLevelChange;
+            CoreGameEvents.Instance.onRestart += OnRestart;
+        }
+
+        private void UnSubscribeEvents()
+        {
+            CoreGameEvents.Instance.onLevelChange -= OnLevelChange;
+            CoreGameEvents.Instance.onRestart -= OnRestart;
+        }
+
+        private void OnDisable()
+        {
+            UnSubscribeEvents();
+        }
+
+        private void Start()
+        {
+            LoadLevel(currentLevelIndex);
+        }
+
+        private void OnLevelChange()
+        {
+            LoadNextLevel();
+        }
+
+        private void OnRestart()
+        {
+            ReloadLevel();
+        }
+
+        private void LoadLevel(int levelIndex)
+        {
+            ClearActiveLevel();
+
+            if (levelIndex >= 0 && levelIndex < levelList.Length)
+            {
+                _activeLevel = Instantiate(levelList[levelIndex]);
+            }
        
-    }
-
-    private void ClearActiveLevel()
-    {
-        if (_activeLevel != null)
-        {
-            Destroy(_activeLevel);
         }
-    }
 
-    private void LoadNextLevel()
-    {
-        currentLevelIndex = (currentLevelIndex + 1) % levelList.Length; 
-        LoadLevel(currentLevelIndex);
-    }
+        private void ClearActiveLevel()
+        {
+            if (_activeLevel != null)
+            {
+                Destroy(_activeLevel);
+            }
+        }
 
-    private void ReloadLevel()
-    {
-        LoadLevel(currentLevelIndex);
+        private void LoadNextLevel()
+        {
+            currentLevelIndex = (currentLevelIndex + 1) % levelList.Length; 
+            LoadLevel(currentLevelIndex);
+        }
+
+        private void ReloadLevel()
+        {
+            LoadLevel(currentLevelIndex);
+        }
     }
 }

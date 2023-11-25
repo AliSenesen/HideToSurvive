@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: WalkerEnemy
   m_EditorClassIdentifier: 
   CanMove: 1
-  MoveSpeed: 2
+  MoveSpeed: 0.75
