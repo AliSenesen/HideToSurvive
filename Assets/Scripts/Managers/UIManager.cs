@@ -71,7 +71,7 @@ namespace Managers
         {
             panelController.ClosePanel(UIPanels.Win);
             CoreGameEvents.Instance.onLevelChange?.Invoke();
-            AdManager.instance.ShowAd();
+           // AdManager.instance.ShowAd();
         }
 
         public void TryAgainButton()
