@@ -53,6 +53,7 @@ namespace Managers
         private void Start()
         {
             panelController.OpenPanel(UIPanels.InGame);
+         
         }
 
         private void OnWin()
@@ -70,12 +71,14 @@ namespace Managers
         {
             panelController.ClosePanel(UIPanels.Win);
             CoreGameEvents.Instance.onLevelChange?.Invoke();
+            AdManager.instance.ShowAd();
         }
 
         public void TryAgainButton()
         {
             panelController.ClosePanel(UIPanels.Fail);
             CoreGameEvents.Instance.onRestart?.Invoke();
+            AdManager.instance.ShowAd();
         }
 
         private void UpdateUI()
