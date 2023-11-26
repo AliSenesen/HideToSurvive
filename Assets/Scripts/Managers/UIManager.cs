@@ -18,12 +18,6 @@ namespace Managers
 
         #region EventSubscription
 
-        private void Awake()
-        {
-            _levelCount = 1;
-            levelText.text = "Lv" + " " + _levelCount;
-        }
-
         private void OnEnable()
         {
             SubscribeEvents();
@@ -50,10 +44,15 @@ namespace Managers
 
         #endregion
 
+        private void Awake()
+        {
+            _levelCount = 1;
+            levelText.text = "Lv" + " " + _levelCount;
+        }
+
         private void Start()
         {
             panelController.OpenPanel(UIPanels.InGame);
-         
         }
 
         private void OnWin()
@@ -71,7 +70,7 @@ namespace Managers
         {
             panelController.ClosePanel(UIPanels.Win);
             CoreGameEvents.Instance.onLevelChange?.Invoke();
-           // AdManager.instance.ShowAd();
+            // AdManager.instance.ShowAd();
         }
 
         public void TryAgainButton()
